@@ -200,6 +200,7 @@ from Utils.Yelp import yelp_search_v3 as yelp_search
 ### 2. Pesquisa de Notícias em alta
 
 Comandos de exemplo:
+
 ```
 me dê notícias sobre UniRitter.
 encontrar notícias sobre chatbot.
@@ -207,6 +208,7 @@ me dê algumas notícias sobre as eleições presidenciais no Brasil.
 Receba notícias de tendências sobre tecnologia de informação.
 procure as últimas notícias sobre futebol.
 ```
+
 ![Pesquisa de Notíciash](https://monosnap.com/file/wTn8lqcV1mgryNs5bMEG2LFcCQb1ff.png)
 
 A Trending News Search usa a [API Webhose.io] (https://webhose.io/SDK). O serviço rastreia a Web em busca de notícias junto com sua força social (curtidas no Facebook, compartilhamentos, postagens no Twitter). No caso de usuários que pesquisam tópicos não relacionados a tendências ou nichos, o Optimist Prime reduz seus critérios de "tendências", bem como o tempo de pesquisa, para obter os melhores resultados.
@@ -214,12 +216,14 @@ A Trending News Search usa a [API Webhose.io] (https://webhose.io/SDK). O servi�
 ### 3. Memorando
 
 Comandos de exemplo:
-`` `
+
+```
 memorize isso para mim: [continue falando seu memorando]
 memorize isso: [continue falando seu memorando]
 memorize isso (pare de falar, o Optimist Prime pedirá para você iniciar seu memorando)
 você pode memorizar isso para mim?
-`` `
+```
+
 ![Memorando](https://monosnap.com/file/cYHCLLXhdSTPeQi0qtTl3dhF7S209k.png)
 
 Esse recurso ainda está em seus conceitos iniciais. Depois que o usuário salvar um memorando, ele pode acessá-lo na web com o link fornecido pelo bot.
