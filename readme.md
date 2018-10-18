@@ -39,7 +39,7 @@ Optimist Prime é um Bot Messenger do Facebook que suporta reconhecimento de voz
 
 #### Screenshots:
 ![Optimist Prime Screenshots](https://monosnap.com/file/gCXyTugWB6IRdGScJBzHLuL9Vz9lMt.png)
-**[Demo](https://www.facebook.com/optimistPrimeBot/)** (click on Message to start chatting with it)
+**[Demo](https://www.facebook.com/optimistPrimeBot/)** (clique na mensagem para começar a conversar com o bot)
 
 
 ## Uso
