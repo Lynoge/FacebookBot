@@ -3,7 +3,7 @@ Optimist Prime Facebook Messenger Bot
 
 Optimist Prime é um Bot Messenger do Facebook que suporta reconhecimento de voz, processamento de linguagem natural e recursos como: pesquisar restaurantes nas proximidades, pesquisar notícias de tendências, transcrever e salvar memorandos na nuvem. Ele também salva dados do usuário (com permissões, é claro), como locais favoritos, pode fornecer saudações personalizadas (reconhecimento do horário do usuário em qualquer fuso horário, ou seja, bom dia / boa noite) e respostas divertidas, etc.
 
-(Para uma implementação de prova de conceito "echo bot" mais simples do Facebook Messenger Bot, confira [this simplified project](https://github.com/hungtraan/FacebookBot-echobot-simple) com [10 minutos de tutorial](https://cli.traan.vn/how-to-create-a-facebook-bot-in-10-minutes-the-complete-tutorial-from-zero-to-hero-ku-352dca274046))
+(Para uma implementação de prova de conceito "echo bot" mais simples do Facebook Messenger Bot, confira [este projeto simplificado](https://github.com/hungtraan/FacebookBot-echobot-simple) com [10 minutos de tutorial](https://cli.traan.vn/how-to-create-a-facebook-bot-in-10-minutes-the-complete-tutorial-from-zero-to-hero-ku-352dca274046))
 
 **Índice**
 
