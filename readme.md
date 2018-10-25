@@ -53,7 +53,10 @@ Para construir seu próprio bot com todos os recursos do Optimist Prime, você p
 0. Instalar dependências: `pip install -r requirements.txt` (de preferência entrar em seu ambiente virtual `virtualenv`/`venv` -ler tudo sobre `pip` e `venv` [aqui](https://packaging.python.org/installing/))
 1. [Crie uma página no Facebook](https://www.facebook.com/pages/create/): uma Página para "atribuir" ao Bot. O Bot será na verdade essa página, ou seja, você estará "falando" com a página
 2. [Crie um aplicativo do Facebook](https://developers.facebook.com/docs/apps/register), obter seu token de acesso à página (detalhes no Facebook [Início rápido](https://developers.facebook.com/docs/messenger-platform/quickstart/))
-3. Criar um banco de dados MongoDB (gerenciamento de usuários, gerenciamento de contexto de conversação, registro), um MongoDB local esta de bom tamanho ([Tutorial](https://scotch.io/tutorials/an-introduction-to-mongodb) para configurar uma instância local). Eu usei [mLab MongoDB] do Heroku (https://elements.heroku.com/addons/mongolab).Você levará 10 minutos para obter uma conta Heroku e criar um banco de dados MongoDB lá.
+3. Criar um banco de dados MongoDB (gerenciamento de usuários, gerenciamento de contexto de conversação, registro), um MongoDB local esta de bom tamanho ([Tutorial](https://scotch.io/tutorials/an-introduction-to-mongodb) para configurar uma instância local). Eu usei [mLab MongoDB] do Heroku (https://elements.heroku.com/addons/mongolab).Você levará 10 minutos para obter uma conta Heroku e criar um banco de dados MongoDB no [mLab](https://mlab.com/).
+
+> É recomendado que a crição do banco de dados MongoDb seja realizada diretamente no [mLab](https://mlab.com/), pois isto irá evitar cadastro do seu cartão de crédito 
+> Ao cadastrar o banco de dados deve-se cadastrar ao menos um usuário (Users) para uso posterior e anotar a conecção que será fornecida (Ex: mongodb://<dbuser>:<dbpassword>@ds263089.mlab.com:63089/webdev), substituindo posteriormente o <dbuser> e <dbpassword> pelas credenciais adequadas. O "webdev" no exemplo apresentado é o banco de dados que será requisitado nas configurações posteriormente. 
 
 Então faça algumas configurações no `config.py`:
 
@@ -76,6 +79,8 @@ Agora que você tem o bot rodando, você precisa configurar um webhook para o Fa
 ```bash
 ./ngrok http 3000
 ```
+> O ngrok pode não funcionar se estiver rodando numa máquina virtual, tal como, VirtualBox, ou por restrições do proxy da sua rede.
+
 ![ngrok](https://monosnap.com/file/HJckHGSorOuoEqm6kBNFb7MQWdNeHf.png)
 
 Obtenha o URL `https` (o Facebook exige webhooks `https`) e assine seu aplicativo do Facebook neste webhook. O token de verificação é o seu próprio token definido em `OWN_VERIFICATION_TOKEN` no `config.py`.
@@ -86,20 +91,7 @@ Obtenha o URL `https` (o Facebook exige webhooks `https`) e assine seu aplicativ
 
 Foi fornecido o Procfile para implantação no **Heroku**. Você pode criar um aplicativo Heroku, criar um dyno grátis e implantar seu próprio Optimist Prime com [este tutorial](https://devcenter.heroku.com/articles/getting-started-with-python#introduction).
 
-Para que o reconhecimento de voz funcione, precisamos incluir `ffmpeg` em nosso Heroku dyno, o que poderia ser feito adicionando um Heroku Buildpack à guia Configurações do seu aplicativo no Dashboard:
-`https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git`
-![buildpack](https://monosnap.com/file/KrXLU25L6NEWvP36lNO4GgCOLWF419.png)
-
-Finalmente, defina sua variável de ambiente para o caminho para o `ffmpeg`:
-```bash
-heroku config:set FFMPEG_PATH=/app/vendor/ffmpeg/ffmpeg
-```
-Ou na guia de configurações do seu aplicativo no Painel:
-![configvar](https://monosnap.com/file/eipdi9mPeKyQDTLvQWMcNUHEtJZ7lG.png)
-
-Agora você está pronto para implantar. [Tutorial sobre como implantar com Heroku e git](https://devcenter.heroku.com/articles/git).
-
-**Comandos úteis do Heroku:**
+**Execute os comandos do Heroku abaixo para criar e fazer deploy da sua aplicação:**
 ```bash
 # Faz Login
 heroku login
@@ -129,6 +121,18 @@ git add .
 git commit -am "Awesome commit"
 git push heroku master
 ```
+Para que o reconhecimento de voz funcione, precisamos incluir `ffmpeg` em nosso Heroku dyno, o que poderia ser feito adicionando um Heroku Buildpack à guia Configurações do seu aplicativo no Dashboard:
+`https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git`
+![buildpack](https://monosnap.com/file/KrXLU25L6NEWvP36lNO4GgCOLWF419.png)
+
+Finalmente, defina sua variável de ambiente para o caminho para o `ffmpeg`:
+```bash
+heroku config:set FFMPEG_PATH=/app/vendor/ffmpeg/ffmpeg
+```
+Ou na guia de configurações do seu aplicativo no Painel:
+![configvar](https://monosnap.com/file/eipdi9mPeKyQDTLvQWMcNUHEtJZ7lG.png)
+
+Agora você está pronto para implantar. [Tutorial sobre como implantar com Heroku e git](https://devcenter.heroku.com/articles/git).
 
 **Amazon Web Service**: Gostom muito da AWS e tive grande experiência com o Beanstalk. No entanto, se você quiser usar o AWS, precisará ir além da obtenção de um certificado SSL para ter um webhook seguro. Para os propósitos do Optimist Prime, eu decidi ir com o Heroku, já que ele fornece prontamente uma conexão `https`.
 
