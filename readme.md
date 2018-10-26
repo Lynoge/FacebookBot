@@ -83,13 +83,7 @@ Agora que você tem o bot rodando, você precisa configurar um webhook para o Fa
 
 ![ngrok](https://monosnap.com/file/HJckHGSorOuoEqm6kBNFb7MQWdNeHf.png)
 
-Obtenha o URL `https` (o Facebook exige webhooks `https`) e assine seu aplicativo do Facebook neste webhook. O token de verificação é o seu próprio token definido em `OWN_VERIFICATION_TOKEN` no `config.py`.
-
-![webhook](https://monosnap.com/file/LJITuhaxURs7MXpDQrvDKBk7yIrBER.png)
-
-##### Implantando na nuvem
-
-Foi fornecido o Procfile para implantação no **Heroku**. Você pode criar um aplicativo Heroku, criar um dyno grátis e implantar seu próprio Optimist Prime com [este tutorial](https://devcenter.heroku.com/articles/getting-started-with-python#introduction).
+O endereço do webhook que será inserido no Facebook pode ser do ngrok ou do heroku, caso for utilizar diretamente no cloud do heroku, executando os comandos descritos abaixo do heroku: 
 
 **Execute os comandos do Heroku abaixo para criar e fazer deploy da sua aplicação:**
 ```bash
@@ -121,6 +115,14 @@ git add .
 git commit -am "Awesome commit"
 git push heroku master
 ```
+Obtenha o URL `https` (o Facebook exige webhooks `https`) e assine seu aplicativo do Facebook neste webhook. O token de verificação é o seu próprio token definido em `OWN_VERIFICATION_TOKEN` no `config.py`.
+
+![webhook](https://monosnap.com/file/LJITuhaxURs7MXpDQrvDKBk7yIrBER.png)
+
+##### Implantando na nuvem
+
+Foi fornecido o Procfile para implantação no **Heroku**. Você pode criar um aplicativo Heroku, criar um dyno grátis e implantar seu próprio Optimist Prime com [este tutorial](https://devcenter.heroku.com/articles/getting-started-with-python#introduction).
+
 Para que o reconhecimento de voz funcione, precisamos incluir `ffmpeg` em nosso Heroku dyno, o que poderia ser feito adicionando um Heroku Buildpack à guia Configurações do seu aplicativo no Dashboard:
 `https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git`
 ![buildpack](https://monosnap.com/file/KrXLU25L6NEWvP36lNO4GgCOLWF419.png)
